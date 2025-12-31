@@ -1,0 +1,313 @@
+/* src/css/_listings.css */
+
+/* --- Marketplace Layout --- */
+#marketplace-container {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+/* --- Modern Search Bar (Floating Pill) --- */
+.search-container {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 20; /* Ensure dropdowns float over other content */
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 850px;
+  margin: 0 auto;
+
+  /* Floating Bar Look */
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 50px; /* Full Pill Shape */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Soft shadow */
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.search-form .input-group {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.search-form .input-icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  z-index: 10;
+  pointer-events: none;
+  font-size: 0.9rem;
+}
+
+/* Unified Input Styling */
+.search-form input,
+.search-form select {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.8rem; /* Space for icon */
+  border: 1px solid transparent; /* Remove default border */
+  border-radius: 40px; /* Match container curvature */
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: #f9f9f9; /* Light contrast background */
+  color: #333;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(104, 159, 56, 0.2); /* Subtle Green Ring */
+  outline: none;
+}
+
+/* Search Button */
+.search-form button {
+  margin: 0;
+  flex: 0 0 auto;
+  border-radius: 40px;
+  padding: 0 2rem;
+  box-shadow: none; /* Flat inside the bar */
+}
+
+/* Custom Dropdown Arrow */
+.search-form .input-group:has(select)::after {
+  content: "\f078"; /* FontAwesome chevron-down */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+  font-size: 0.7rem;
+}
+
+/* --- Marketplace Toggle Wrapper --- */
+.marketplace-toggle-wrapper {
+  margin-top: 0;
+}
+
+/* --- Grid & Cards --- */
+.grid-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+#listings-grid-content,
+#featured-listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem; /* Tighter grid spacing */
+  margin-top: 1rem;
+}
+
+.listing-card {
+  background-color: var(--bg-white);
+  border-radius: 12px; /* Softer corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.listing-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.listing-card-link:visited {
+  color: inherit;
+}
+
+.listing-card img {
+  width: 100%;
+  height: 180px; /* Standardized height */
+  object-fit: cover;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.listing-card-content {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.listing-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.listing-card .price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.listing-card .location {
+  font-size: 0.85rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* --- Load More Button --- */
+.load-more-container {
+  text-align: center;
+  margin-top: 2.5rem;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+/* --- Listing Detail Page --- */
+.breadcrumb {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb .current {
+  color: var(--text-main);
+  font-weight: normal;
+}
+
+#listing-detail-container {
+  background-color: var(--bg-white);
+  padding: 2rem;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-areas: "image info sidebar";
+  gap: 2rem;
+}
+
+.listing-detail-image-wrapper {
+  grid-area: image;
+}
+
+#listing-image {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  background-color: #eee;
+}
+
+.listing-detail-info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-detail-sidebar {
+  grid-area: sidebar;
+}
+
+#listing-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+#listing-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.listing-meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.listing-meta-item {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.listing-meta-item i {
+  font-size: 1rem;
+  color: var(--primary-color);
+  width: 20px;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.listing-description-card {
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.listing-description-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.listing-description-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.farmer-details-card {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
+  align-self: start;
+  position: sticky;
+  top: 100px;
+}
+
+.farmer-details-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.farmer-details-card .listing-meta-item {
+  margin-bottom: 1.5rem;
+}
+
+.btn-full-width {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}

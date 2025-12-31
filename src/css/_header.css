@@ -1,0 +1,226 @@
+/* src/css/_header.css */
+
+/* --- Global Header Container --- */
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  transition: box-shadow 0.3s ease;
+}
+
+header.is-scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-bottom: none;
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 180px 1fr 280px;
+  align-items: center;
+}
+
+/* --- 1. BRANDING --- */
+.header-left h1 {
+  margin: 0;
+  line-height: 1;
+}
+
+.logo-link {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- 2. CENTER NAVIGATION --- */
+/* src/css/_header.css */
+
+/* ... (Top of file remains unchanged) ... */
+
+/* --- 2. CENTER NAVIGATION --- */
+.header-center {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-pills-container {
+  display: flex;
+  /* ★ CHANGED: Removed background-color and border for cleaner look ★ */
+  background-color: transparent; 
+  padding: 4px;
+  border-radius: 4px;
+  border: none; 
+}
+
+.nav-pill {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 8px 20px;
+  border-radius: 4px;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* ★ NEW: Ensure transparent background by default ★ */
+  background-color: transparent;
+}
+
+.nav-pill i {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.nav-pill:hover {
+  color: var(--text-main);
+  /* ★ CHANGED: Much lighter hover state ★ */
+  background-color: #f9f9f9; 
+}
+
+/* Active State: Keep the highlight so they know where they are */
+.nav-pill.active {
+  background-color: #ffffff; /* White card look */
+  color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+  /* Optional: Add a subtle border to define it against the white header */
+  border: 1px solid #eee;
+}
+.nav-pill.active i {
+  opacity: 1;
+}
+
+/* ... (Rest of file remains unchanged) ... */
+/* --- 3. USER ACTIONS --- */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.action-icon {
+  position: relative;
+  color: #555;
+  font-size: 1.4rem;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.action-icon:hover {
+  color: var(--primary-color);
+}
+
+.user-avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 12px 4px 4px;
+  /* ★ CHANGED: Squared off from 50px to 4px ★ */
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.user-avatar-btn:hover {
+  background-color: #f9f9f9;
+  border-color: #eee;
+}
+
+.avatar-circle {
+  width: 36px;
+  height: 36px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  /* Keep avatar circular (standard UI pattern), or change to 4px if you want square avatars too */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.user-name-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-link {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.login-link:hover {
+  color: var(--primary-color);
+}
+
+/* Primary CTA Button */
+.btn-sell {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  /* ★ CHANGED: Squared off from 50px to 4px ★ */
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-sell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(104, 159, 56, 0.3);
+}
+
+/* --- MOBILE OVERRIDES --- */
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .header-center,
+  .header-right {
+    display: none !important;
+  }
+
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
