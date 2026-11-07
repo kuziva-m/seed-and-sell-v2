@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local env
+.env
+.env.*
+!.env.example
+
+# Database backups (contain third-party data; keep out of git)
+supabase/backups/
